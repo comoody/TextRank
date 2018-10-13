@@ -10,7 +10,7 @@ TextRank::TextRank():
 
 TextRank::~TextRank() {}
 
-std::vector<std::string> TextRank::Rank(const std::vector<std::string>& sentences)
+std::vector<std::string> TextRank::rank(const std::vector<std::string>& sentences)
 {
     std::vector<std::string> uniqueSentences = removeDuplicates(sentences);
     FloatMatrix similarityMatrix = buildSimilarityMatrix(uniqueSentences);

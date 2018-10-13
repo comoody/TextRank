@@ -1,5 +1,5 @@
-#ifndef TEXTRANK_H_
-#define TEXTRANK_H_
+#ifndef TEXTRANKER_H_
+#define TEXTRANKER_H_
 
 #include <algorithm>
 #include <ctime>
@@ -21,7 +21,7 @@ public:
     TextRank();
     ~TextRank();
 
-    std::vector<std::string> Rank(const std::vector<std::string>& sentences);
+    std::vector<std::string> rank(const std::vector<std::string>& sentences);
 private:
     typedef std::vector<std::vector<float>> FloatMatrix; 
 
