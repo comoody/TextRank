@@ -1,19 +1,20 @@
-#ifndef UTILSTEST_H_
-#define UTILSTEST_H_
+#include "./UtilsTest.h"
 
-#include "./TestSuite.h"
+using namespace test;
 
-namespace
+UtilsTest::UtilsTest():
+    TestSuite("utils tests")
 {
-
-class UtilsTest: public TestSuite
-{
-public:
-    UtilsTest();
-private:
-
-};
-
+    registerTest("test string split functionality", static_cast<TestCallback>(&UtilsTest::stringSplitTest));
+    registerTest("test remove duplicates functionality", static_cast<TestCallback>(&UtilsTest::removeDuplicatesTest));
 }
 
-#endif
+void UtilsTest::stringSplitTest()
+{
+    return;
+}
+
+void UtilsTest::removeDuplicatesTest()
+{
+    return;
+}
