@@ -7,7 +7,7 @@ TestSuite::TestSuite(std::string name):
     tests()
 {}
 
-void TestSuite::runTests()
+TestSuite::Summary TestSuite::runTests()
 {
     std::cout << "********* Running " << suiteName << "*********\n";
     Summary testSummary;
@@ -43,7 +43,7 @@ void TestSuite::runTests()
 
     std::cout << suiteName + " done" << std::endl;
     std::cout << testSummary.passedCount << " passed" << std::endl;
-    std::cout << testSummary.failedcount << " failed" << std::endl;
+    std::cout << testSummary.failedCount << " failed" << std::endl;
 
     return testSummary;
 }
@@ -51,4 +51,10 @@ void TestSuite::runTests()
 void TestSuite::registerTest(std::string description, TestCallback test)
 {
     tests.push_back(std::pair<std::string, TestCallback>(description, test));
+}
+
+void assert(bool val)
+{
+    if(!val)
+        throw FailedTestException("expected true");
 }

@@ -16,12 +16,11 @@ class TestSuite
 {
 public:
     TestSuite(std::string suiteName);
-    ~TestSuite();
 
     struct Summary
     {
         int passedCount;
-        int failedcount;
+        int failedCount;
     };
 
     Summary runTests();
@@ -29,6 +28,15 @@ public:
 protected:
     typedef void (TestSuite::*TestCallback)();
     void registerTest(std::string description, TestCallback test);
+
+    void assert(bool val);
+
+    template<typename T>
+    void assertEqual(T a, T b)
+    {
+        if(a != b)
+            throw FailedTestException("expected " + std::to_string(a) + " to be equal to " + std::to_string(b));
+    }
 
 private:
     std::string suiteName;
