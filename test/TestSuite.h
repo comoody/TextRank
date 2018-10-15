@@ -11,12 +11,10 @@
 namespace test
 {
 
-// base class to register and run tests
+// abstract base class to register and run tests
 class TestSuite
 {
 public:
-    TestSuite(std::string suiteName);
-
     struct Summary
     {
         int passedCount;
@@ -26,6 +24,8 @@ public:
     Summary runTests();
 
 protected:
+    TestSuite(std::string suiteName);
+
     typedef void (TestSuite::*TestCallback)();
     void registerTest(std::string description, TestCallback test);
 

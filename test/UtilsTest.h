@@ -6,7 +6,7 @@
 namespace test
 {
 
-class UtilsTest: public TestSuite
+class UtilsTest final: public TestSuite
 {
 public:
     UtilsTest();

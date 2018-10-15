@@ -8,7 +8,7 @@
 namespace test
 {
 
-class TestRankerTest: public TestSuite
+class TestRankerTest final: public TestSuite
 {
 public:
     TestRankerTest();
