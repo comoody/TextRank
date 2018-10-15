@@ -4,6 +4,7 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 #include "./FailedTestException.h"
@@ -27,7 +28,17 @@ protected:
     TestSuite(std::string suiteName);
 
     typedef void (TestSuite::*TestCallback)();
-    void registerTest(std::string description, TestCallback test);
+    
+    // template that can only be instantiated by derived classes
+    // equivalent to template<T extends TestSuite>
+    // thus, derived classes pass in their member pointers and safely be casted as TestSuite (base) methods
+    // because the base instance on which the methods will be called will always be an instance of derived class T
+    template<typename T, typename std::enable_if<std::is_base_of<TestSuite, T>::value>::type* = nullptr>
+    void registerTest(std::string description, void(T::*derivedTestCallback)())
+    {
+        auto testCallback = static_cast<TestCallback>(derivedTestCallback);
+        tests.push_back(std::pair<std::string, TestCallback>(description, testCallback));
+    }
 
     void assert(bool val);
 
