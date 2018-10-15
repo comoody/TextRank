@@ -11,6 +11,8 @@ TestSuite::Summary TestSuite::runTests()
 {
     std::cout << "********* Running " << suiteName << "*********\n";
     Summary testSummary;
+    testSummary.passedCount = 0;
+    testSummary.failedCount = 0;
 
     for(auto testPair : tests)
     {
@@ -46,11 +48,6 @@ TestSuite::Summary TestSuite::runTests()
     std::cout << testSummary.failedCount << " failed" << std::endl;
 
     return testSummary;
-}
-
-void TestSuite::registerTest(std::string description, TestCallback test)
-{
-    tests.push_back(std::pair<std::string, TestCallback>(description, test));
 }
 
 void assert(bool val)
