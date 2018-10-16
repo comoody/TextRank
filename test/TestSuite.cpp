@@ -1,15 +1,22 @@
 #include "TestSuite.h"
 
-using namespace test;
+namespace test
+{
 
 TestSuite::TestSuite(std::string name):
     suiteName(name),
     tests()
 {}
 
+void TestSuite::assertEqual(const std::string& a, const std::string& b)
+{
+    if(a != b)
+        throw FailedTestException("expected " + a + " to be equal to " + b);
+}
+
 TestSuite::Summary TestSuite::runTests()
 {
-    std::cout << "********* Running " << suiteName << "*********\n";
+    std::cout << "\n\n********* Running " << suiteName << "*********\n\n";
     Summary testSummary;
     testSummary.passedCount = 0;
     testSummary.failedCount = 0;
@@ -27,11 +34,11 @@ TestSuite::Summary TestSuite::runTests()
             passed = true;
             message = testName + " passed";
         }
-        catch(FailedTestException e)
-        {
-            message = testName + " failed: " + e.what();
+        catch(const FailedTestException& e)
+        {            
+            message = testName + " failed: " + std::string(e.what());
         }
-        catch(std::exception e)
+        catch(const std::exception& e)
         {
             message = "there was a problem runnung "
             + testName
@@ -50,8 +57,10 @@ TestSuite::Summary TestSuite::runTests()
     return testSummary;
 }
 
-void assert(bool val)
+void TestSuite::assert(bool val)
 {
     if(!val)
         throw FailedTestException("expected true");
+}
+
 }
