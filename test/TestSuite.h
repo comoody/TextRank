@@ -49,6 +49,9 @@ protected:
             throw FailedTestException("expected " + std::to_string(a) + " to be equal to " + std::to_string(b));
     }
 
+    // assert equal is overloaded for strings because std::to_string from the generic version does not work on strings
+    void assertEqual(const std::string& a, const std::string& b);
+
 private:
     std::string suiteName;
     std::vector<std::pair<std::string, TestCallback>> tests;

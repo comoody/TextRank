@@ -2,6 +2,7 @@
 #define FAILEDTESTEXCEPTION_H_
 
 #include <exception>
+#include <string>
 
 namespace test
 {
@@ -9,11 +10,11 @@ namespace test
 class FailedTestException: public std::exception
 {
 public:
-    FailedTestException(const char* reason);
-    virtual const char* what();
+    FailedTestException(const std::string& reason);
+    virtual const char* what() const noexcept;
 
 private:
-    const char* reason;
+    std::string reason;
 };
 
 }

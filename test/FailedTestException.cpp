@@ -2,11 +2,11 @@
 
 using namespace test;
 
-FailedTestException::FailedTestException(const char* reason):
+FailedTestException::FailedTestException(const std::string& reason):
     reason(reason)
 {}
 
-const char* FailedTestException::what()
+const char* FailedTestException::what() const noexcept
 {
-    return reason;
+    return reason.c_str();
 }
