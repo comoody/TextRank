@@ -21,21 +21,21 @@ public:
     TextRank();
     ~TextRank();
 
-    std::vector<std::string> rank(const std::vector<std::string>& sentences);
+    std::vector<std::string> rank(const std::vector<std::string>& sentences) const;
 private:
     typedef std::vector<std::vector<float>> FloatMatrix; 
 
     const float kNewWalkThreshold;
 
-    float getSimilarity(std::string a, std::string b);
-    FloatMatrix buildSimilarityMatrix(const std::vector<std::string>& sentences);
-    std::vector<std::string> rankSentences(const FloatMatrix& similarityMatrix, const std::vector<std::string>& sentences);
+    float getSimilarity(std::string a, std::string b) const;
+    FloatMatrix buildSimilarityMatrix(const std::vector<std::string>& sentences) const;
+    std::vector<std::string> rankSentences(const FloatMatrix& similarityMatrix, const std::vector<std::string>& sentences) const;
     void doSentenceGraphWalk
     (
         const FloatMatrix& similarityMatrix,
         const std::vector<std::string>& sentences,
         std::map<std::string, int>& visits
-    );
+    ) const;
 };
 
 }

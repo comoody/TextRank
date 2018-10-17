@@ -41,19 +41,17 @@ protected:
         tests.push_back(std::pair<std::string, TestCallback>(description, testCallback));
     }
 
-    void assert(bool val);
+    void assert(bool val) const;
 
     template<typename T>
-    void assertEqual(T a, T b)
+    void assertEqual(T a, T b) const
     {
         if(a != b)
             throw FailedTestException("expected " + std::to_string(a) + " to be equal to " + std::to_string(b));
     }
 
     // assert equal is overloaded for strings because std::to_string from the generic version does not work on strings
-    void assertEqual(const std::string& a, const std::string& b);
-
-    void displayLine(std::string message);
+    void assertEqual(const std::string& a, const std::string& b) const;
 
 private:
     std::string suiteName;

@@ -10,7 +10,7 @@ TextRank::TextRank():
 
 TextRank::~TextRank() {}
 
-std::vector<std::string> TextRank::rank(const std::vector<std::string>& sentences)
+std::vector<std::string> TextRank::rank(const std::vector<std::string>& sentences) const
 {
     std::vector<std::string> uniqueSentences = removeDuplicates(sentences);
     FloatMatrix similarityMatrix = buildSimilarityMatrix(uniqueSentences);
@@ -18,7 +18,7 @@ std::vector<std::string> TextRank::rank(const std::vector<std::string>& sentence
     return rankSentences(similarityMatrix, uniqueSentences);
 }
 
-TextRank::FloatMatrix TextRank::buildSimilarityMatrix(const std::vector<std::string>& sentences)
+TextRank::FloatMatrix TextRank::buildSimilarityMatrix(const std::vector<std::string>& sentences) const
 {
     const int kDim = sentences.size();
     std::vector<std::vector<float>> similarityMatrix(kDim, std::vector<float>(kDim, 0));
@@ -39,7 +39,7 @@ std::vector<std::string> TextRank::rankSentences
 (
     const TextRank::FloatMatrix& similarityMatrix,
     const std::vector<std::string>& sentences
-)
+) const
 {
     // initializes score map
     std::map<std::string, int> visits;
@@ -74,7 +74,7 @@ void TextRank::doSentenceGraphWalk
     const FloatMatrix& similarityMatrix,
     const std::vector<std::string>& sentences,
     std::map<std::string, int>& visits
-)
+) const
 {
     const int kDim = sentences.size();
     bool continueWalk = true;
@@ -119,7 +119,7 @@ void TextRank::doSentenceGraphWalk
     }
 }
 
-float TextRank::getSimilarity(std::string a, std::string b)
+float TextRank::getSimilarity(std::string a, std::string b) const
 {
     // no two equivalent sentences should ever be compared, but this logic is included just in case
     if(a == b)
