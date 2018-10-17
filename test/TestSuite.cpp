@@ -9,7 +9,7 @@ TestSuite::TestSuite(std::string name):
     testReporter()
 {}
 
-void TestSuite::assertEqual(const std::string& a, const std::string& b)
+void TestSuite::assertEqual(const std::string& a, const std::string& b) const
 {
     if(a != b)
         throw FailedTestException("expected " + a + " to be equal to " + b);
@@ -61,7 +61,7 @@ TestSuite::Summary TestSuite::runTests()
     return testSummary;
 }
 
-void TestSuite::assert(bool val)
+void TestSuite::assert(bool val) const
 {
     if(!val)
         throw FailedTestException("expected true");
