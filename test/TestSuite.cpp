@@ -5,7 +5,8 @@ namespace test
 
 TestSuite::TestSuite(std::string name):
     suiteName(name),
-    tests()
+    tests(),
+    testReporter()
 {}
 
 void TestSuite::assertEqual(const std::string& a, const std::string& b)
@@ -16,7 +17,8 @@ void TestSuite::assertEqual(const std::string& a, const std::string& b)
 
 TestSuite::Summary TestSuite::runTests()
 {
-    std::cout << "\n\n********* Running " << suiteName << "*********\n\n";
+    testReporter.displayLine("\n\n********* Running " + suiteName + " *********\n",
+        TestReporter::TextColor::BLUE_TC, TestReporter::BackgroundColor::WHITE_BC, true /*bold*/);
     Summary testSummary;
     testSummary.passedCount = 0;
     testSummary.failedCount = 0;
@@ -46,13 +48,15 @@ TestSuite::Summary TestSuite::runTests()
             + e.what();
         }
 
-        std::cout << message << std::endl;
+        testReporter.displayLine(message, passed ? TestReporter::TextColor::DEFAULT_TC : TestReporter::TextColor::RED_TC);
         passed ? testSummary.passedCount++ : testSummary.failedCount++;
     }
 
     std::cout << suiteName + " done" << std::endl;
-    std::cout << testSummary.passedCount << " passed" << std::endl;
-    std::cout << testSummary.failedCount << " failed" << std::endl;
+    testReporter.displayLine(std::to_string(testSummary.passedCount) + " passed",
+        testSummary.passedCount > 0 ? TestReporter::TextColor::GREEN_TC : TestReporter::TextColor::DEFAULT_TC);
+    testReporter.displayLine(std::to_string(testSummary.failedCount) + " failed",
+        testSummary.failedCount > 0 ? TestReporter::TextColor::RED_TC : TestReporter::TextColor::DEFAULT_TC);
 
     return testSummary;
 }

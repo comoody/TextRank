@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "./FailedTestException.h"
+#include "./TestReporter.h"
 
 namespace test
 {
@@ -52,9 +53,12 @@ protected:
     // assert equal is overloaded for strings because std::to_string from the generic version does not work on strings
     void assertEqual(const std::string& a, const std::string& b);
 
+    void displayLine(std::string message);
+
 private:
     std::string suiteName;
     std::vector<std::pair<std::string, TestCallback>> tests;
+    TestReporter testReporter;
 };
 
 }
