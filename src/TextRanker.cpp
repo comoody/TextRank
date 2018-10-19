@@ -1,5 +1,13 @@
 #include "../include/TextRanker.h"
 
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <numeric>
+#include <set>
+
+#include "../src/utils.h"
+
 using namespace textrank;
 
 TextRank::TextRank():

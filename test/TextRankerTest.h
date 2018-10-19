@@ -3,8 +3,6 @@
 
 #include "./TestSuite.h"
 
-#include <string>
-
 namespace test
 {
 

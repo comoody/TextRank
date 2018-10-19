@@ -1,9 +1,12 @@
 #include "TestSuite.h"
 
+#include <exception>
+#include <iostream>
+
 namespace test
 {
 
-TestSuite::TestSuite(std::string name):
+TestSuite::TestSuite(const std::string& name):
     suiteName(name),
     tests(),
     testReporter()

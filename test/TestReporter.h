@@ -1,7 +1,7 @@
 #ifndef TESTREPORTER_H_
 #define TESTREPORTER_H_
 
-#include <iostream>
+#include <string>
 
 namespace test
 {

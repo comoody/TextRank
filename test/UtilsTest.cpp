@@ -1,5 +1,9 @@
 #include "./UtilsTest.h"
 
+#include <algorithm>
+
+#include "../src/utils.h"
+
 using namespace test;
 
 UtilsTest::UtilsTest():

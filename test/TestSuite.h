@@ -1,8 +1,6 @@
 #ifndef TESTSUITE_H_
 #define TESTSUITE_H_
 
-#include <exception>
-#include <iostream>
 #include <string>
 #include <type_traits>
 #include <vector>
@@ -26,7 +24,7 @@ public:
     Summary runTests();
 
 protected:
-    TestSuite(std::string suiteName);
+    TestSuite(const std::string& suiteName);
 
     typedef void (TestSuite::*TestCallback)();
     

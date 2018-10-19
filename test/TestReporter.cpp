@@ -1,5 +1,7 @@
 #include "./TestReporter.h"
 
+#include <iostream>
+
 using namespace test;
 
 TestReporter::TestReporter()

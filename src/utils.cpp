@@ -1,5 +1,7 @@
 #include "./utils.h"
 
+#include <sstream>
+
 std::vector<std::string> textrank::stringSplit(const std::string& str, char delimeter)
 {
 

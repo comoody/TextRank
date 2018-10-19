@@ -1,16 +1,11 @@
 #ifndef TEXTRANKER_H_
 #define TEXTRANKER_H_
 
-#include <algorithm>
-#include <ctime>
-#include <cstdlib>
 #include <map>
-#include <numeric>
-#include <set>
 #include <string>
 #include <vector>
 
-#include "../src/utils.h"
+
 
 namespace textrank
 {
