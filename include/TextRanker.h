@@ -10,11 +10,11 @@
 namespace textrank
 {
 
-class TextRank
+class TextRanker
 {
 public:
-    TextRank();
-    ~TextRank();
+    TextRanker();
+    ~TextRanker();
 
     std::vector<std::string> rank(const std::vector<std::string>& sentences) const;
 private:
