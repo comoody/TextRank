@@ -6,14 +6,14 @@
 namespace test
 {
 
-class TestRankerTest final: public TestSuite
+class TextRankerTest final: public TestSuite
 {
 public:
-    TestRankerTest();
+    TextRankerTest();
 private:
-
+    void rankIntegrationTest();
 };
 
-}
+};
 
 #endif
