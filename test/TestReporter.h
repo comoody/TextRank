@@ -30,7 +30,7 @@ public:
 
     void displayLine
     (
-        std::string message,
+        const std::string& message,
         TextColor textColor = TextColor::DEFAULT_TC,
         BackgroundColor backgroundColor = BackgroundColor::DEFAULT_BC,
         bool isBold = false

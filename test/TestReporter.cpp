@@ -5,12 +5,12 @@ using namespace test;
 TestReporter::TestReporter()
 {
     std::string terminalName = std::string(::getenv("TERM"));
-    isColorSupported = true;
+    isColorSupported = terminalName.find("color") != std::string::npos;
 }
 
 void TestReporter::displayLine
 (
-    std::string message,
+    const std::string& message,
     TextColor textColor,
     BackgroundColor backgroundColor,
     bool isBold
