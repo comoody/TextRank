@@ -23,6 +23,8 @@ std::vector<T> removeDuplicates(const std::vector<T>& vec)
 
 std::vector<std::string> stringSplit(const std::string& str, char delimeter);
 
+std::vector<std::string> extractSentences(const std::string& str);
+
 }
 
 #endif
