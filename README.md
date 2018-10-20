@@ -20,7 +20,9 @@ This project implements the TextRank algorithm on a set of text. The goal of the
 ## API
 The *TextRanker* class contains all of the logic implementing the TextRank algorithm.  
 *TextRanker::Rank(std::vector\<std::string> sentences)* runs the entire algorithm on a vector of sentences  
-
+  
+    
+Utils.h contains helpers to prep a body of text for ranking, such as *stringSplit(str)* and *extractSentences(str)*
   
 ## Tests
 Tests are found in the test/ directory. Test classes inherit from *TestSuite* and define tests as private member functions. To ensure that these tests run, test classes call *registerTest(name, testFunc)* and pass it a test name as well as a pointer to the member function that includes the test case. Tests can call *assert(condition)* as well as *assertEqual(a, b)* to execute test logic. Results are reported using the *TestReporter* class.
