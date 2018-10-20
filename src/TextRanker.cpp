@@ -54,7 +54,7 @@ std::vector<std::string> TextRanker::rankSentences
     for(std::string sentence : sentences)
         visits[sentence] = 0;
     
-    const int kWalkCount = 20;
+    const int kWalkCount = 50;
     const int kDim = sentences.size();
 
     for(int i = 0; i < kWalkCount; i++)
@@ -111,7 +111,6 @@ void TextRanker::doSentenceGraphWalk
 
         // normalize probabilites
         float sum = std::accumulate(probabilites.begin(), probabilites.end(), 0.f);
-
         std::transform(probabilites.begin(), probabilites.end(), probabilites.begin(), [sum](float probability)
         {
             return probability / sum;
