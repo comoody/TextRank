@@ -5,7 +5,10 @@
 #include <string>
 #include <vector>
 
-
+namespace test
+{
+    class TextRankerTest;
+}
 
 namespace textrank
 {
@@ -18,6 +21,7 @@ public:
 
     std::vector<std::string> rank(const std::vector<std::string>& sentences) const;
 private:
+    friend class test::TextRankerTest;
     typedef std::vector<std::vector<float>> FloatMatrix; 
 
     const float kNewWalkThreshold;

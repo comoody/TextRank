@@ -10,8 +10,9 @@ class TextRankerTest final: public TestSuite
 {
 public:
     TextRankerTest();
-private:
-    void rankIntegrationTest();
+private:    
+    void textRankIntegrationTest();
+    void buildSimilarityMatrixTest();    
 };
 
 };
